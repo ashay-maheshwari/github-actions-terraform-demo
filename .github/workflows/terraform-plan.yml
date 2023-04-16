@@ -6,9 +6,9 @@ jobs:
         name: "Terraform validate and Terraform Plan"
         runs-on: ubuntu-latest
         env:
-            ACCESS_KEY_ID: ${{ secrets.KEY_ID }}
-            SECRET_KEY: ${{ secrets.SECRET_KEY }}
-            REGION: "us-east-1"
+            AWS_ACCESS_KEY_ID: ${{ secrets.KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+            AWS_REGION: "us-east-1"
 
         steps:
             - name: "Checkout terraform scripts"
