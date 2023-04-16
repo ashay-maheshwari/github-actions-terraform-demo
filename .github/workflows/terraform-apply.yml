@@ -1,13 +1,13 @@
-# workflow to generate terraform plan 
-name: "Terraform plan execution workflow"
+# workflow to apply terraform script
+name: "Terraform Apply to create resources"
 on:
     push:
         branches:
-            - 'development'
+            - 'main'
 
 jobs:
-    TerraformPlan:
-        name: "Terraform validate and Terraform Plan"
+    TerraformApply:
+        name: "Terraform Apply"
         runs-on: ubuntu-latest
         env:
             AWS_ACCESS_KEY_ID: ${{ secrets.KEY_ID }}
@@ -29,5 +29,8 @@ jobs:
 
             - name: "Terraform plan"
               run: terraform plan
+
+            - name: "Terraform apply"
+              run: terraform apply -auto-approve
             
 
