@@ -1,0 +1,3 @@
+name: "Terraform plan execution workflow"
+on: workflow_dispatch
+
