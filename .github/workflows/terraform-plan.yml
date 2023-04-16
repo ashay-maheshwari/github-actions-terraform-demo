@@ -1,3 +1,29 @@
 name: "Terraform plan execution workflow"
 on: workflow_dispatch
 
+jobs:
+    TerraformCheckout:
+        name: "Terraform validate and Terraform Plan"
+        runs-on: ubuntu-latest
+        env:
+            ACCESS_KEY_ID: ${{ secrets.KEY_ID }}
+            SECRET_KEY: ${{ secrets.SECRET_KEY }}
+            REGION: $${{ variables.DEPLOYMENT_REGION }}
+
+        steps:
+            - name: "Checkout terraform scripts"
+              uses: actions/checkout@v2
+    
+            - name: "Setup Terraform on runner"
+              uses: hashicorp/setup-terraform@v1
+    
+            - name: "Terraform init"
+              run: terraform init
+
+            - name: "Terraform validate"
+              run: terraform validate 
+
+            - name: "Terraform plan"
+              run: terraform plan
+            
+
