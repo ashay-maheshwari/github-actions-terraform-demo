@@ -1,5 +1,9 @@
+# workflow to generate terraform plan 
 name: "Terraform plan execution workflow"
-on: workflow_dispatch
+on:
+    push:
+        branches:
+            - 'development'
 
 jobs:
     TerraformCheckout:
